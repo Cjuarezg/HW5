@@ -14,4 +14,8 @@ cd ..
 cd data/
 ls -a
 ```
+```{r}
+library(readr)
+
+```
 
