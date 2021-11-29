@@ -15,7 +15,10 @@ cd data/
 ls -a
 ```
 ```{r}
+#load data
+
 library(readr)
+hom <- read_csv("../data/homicide-data.csv")
 
 ```
 
