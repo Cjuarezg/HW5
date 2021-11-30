@@ -38,8 +38,11 @@ hom %>%
          year_month = ym(year_month)) %>%
   group_by(year_month) %>%
   count() %>%
+  ungroup() %>%
+  mutate(cold = month(year_month) %in% c(11, 12, 1, 2, 3, 4)) %>%
   ggplot() +
-  geom_col(aes(x = year_month, y = n)) +
+  geom_col(aes(x = year_month, y = n, fill = cold)) +
   geom_smooth(aes(x = year_month, y = n), span = .09, se = FALSE)
+
 ```
 
