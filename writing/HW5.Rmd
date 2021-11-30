@@ -48,6 +48,9 @@ hom %>%
   theme_dark() +
   ylab("Monthly homicides") +
   xlab("Date") +
-  ggtitle("Homicides in Baltimore, MD") 
+  ggtitle("Homicides in Baltimore, MD") +
+  geom_vline(xintercept = ymd("2015-04-01"), color = "red", linetype = "dashed", size = 3)
+
+?geom_vline
 ```
 
