@@ -14,11 +14,32 @@ cd ..
 cd data/
 ls -a
 ```
+Choice 2: Recreate the graph shown below. It shows monthly homicides in Baltimore, with a reference added for the date of the arrest of Freddie Gray and color used to show colder months (November through April) versus warmer months (May through October). There is a smooth line added to help show seasonal and long-term trends in this data.
 ```{r}
 #load data
 
 library(readr)
-hom <- read_csv("../data/homicide-data.csv")
+library(tidyverse)
+library(lubridate)
 
+hom <- read_csv("../data/homicide-data.csv")
+```
+
+
+```{r}
+#make plot, choice 2
+
+hom %>% 
+  filter(city == "Baltimore") %>%
+  mutate(reported_date = ymd(reported_date), 
+         year = year(reported_date), 
+         month = month(reported_date), 
+         year_month = paste(year, month), 
+         year_month = ym(year_month)) %>%
+  group_by(year_month) %>%
+  count() %>%
+  ggplot() +
+  geom_col(aes(x = year_month, y = n)) +
+  geom_smooth(aes(x = year_month, y = n), span = .09, se = FALSE)
 ```
 
