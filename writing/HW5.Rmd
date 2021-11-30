@@ -39,10 +39,10 @@ hom %>%
   group_by(year_month) %>%
   count() %>%
   ungroup() %>%
-  mutate(cold = month(year_month) %in% c(11, 12, 1, 2, 3, 4)) %>%
+  mutate(cold = ifelse(month(year_month) %in% c(11, 12, 1, 2, 3, 4), "Winter", "Summer")) %>%
   ggplot() +
   geom_col(aes(x = year_month, y = n, fill = cold)) +
+  scale_fill_manual(values = c("gray71", "skyblue1")) +
   geom_smooth(aes(x = year_month, y = n), span = .09, se = FALSE)
-
 ```
 
