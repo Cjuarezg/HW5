@@ -49,12 +49,10 @@ hom %>%
   ylab("Monthly homicides") +
   xlab("Date") +
   ggtitle("Homicides in Baltimore, MD") +
-  geom_vline(xintercept = ymd("2015-04-01"), color = "red", linetype = "dashed", size = 3) +
+  geom_vline(xintercept = ymd("2015-04-01"), color = "red", linetype = "dashed", size = 1.1) +
   geom_text(aes(x = ymd("2014-06-01"), y = 40, label = "Arrest of\n Freddie Grey        "), 
             color = "grey88") + #had to "eyeball" the position, but I imagine theres an automatic way to do this 
-  theme(legend.position = "bottom", legend.title =  element_blank())
+  theme(legend.position = "bottom", legend.title =  element_blank(), aspect.ratio = .2)
 
-?geom_vline
-?theme
 ```
 
